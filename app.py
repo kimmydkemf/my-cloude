@@ -14,6 +14,7 @@ app.py — 외장하드 전체 파일 NAS
     python app.py
 """
 
+from dotenv import load_dotenv
 import os
 import mimetypes
 import subprocess
@@ -32,8 +33,10 @@ from flask import (Flask, request, jsonify, render_template_string,
 #  설정
 # ─────────────────────────────────────────────────
 
+load_dotenv()
+
 ROOT_DIR        = r"D:\\"               # 외장하드 루트 (전체 공유)
-PASSWORD        = "os.getenv("PASSWORD")
+PASSWORD        = os.getenv("PASSWORD")
 SECRET_KEY      = secrets.token_hex(24)
 NOTION_TOKEN    = os.getenv("NOTION_API_TOKEN")
 NOTION_PAGE_ID  = "32675dfafcf380aab44fc0e8b676298a"
